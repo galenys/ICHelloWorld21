@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% endblock %}</title>
+
+
+    <link rel="stylesheet" href="{% static 'Chats/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://use.typekit.net/flc8ghp.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class='large'>
+        <div class="container">
+            <ul>
+                <li class="{% if active_tab == 'home' %}active-link{% else %}link-hover{% endif %}">
+                    <a href="{% url 'index' %}">Home</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="{% if active_tab == 'logout' %}active-link{% else %}link-hover{% endif %}">
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="{% if active_tab == 'login' %}active-link{% else %}link-hover{% endif %}">
+                    <a href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="{% if active_tab == 'new_user' %}active-link{% else %}link-hover{% endif %}">
+                    <a href="{% url 'new_user' %}">Sign Up</a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+
+</html>

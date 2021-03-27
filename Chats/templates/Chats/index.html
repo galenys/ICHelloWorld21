@@ -1,0 +1,17 @@
+{% extends "Chats/base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<main class="padding height-restriction">
+    {% if user.is_authenticated %}
+    <h3 class="heading">Welcome home, {{ user.first_name }}.</h3>
+    {% else %}
+    <h3 class="greeting-header">Hi! You're not signed in yet.</h3>
+    {% endif %}
+
+</main>
+{% endblock %}

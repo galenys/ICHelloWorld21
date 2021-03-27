@@ -1,0 +1,21 @@
+{% extends "Chats/base.html" %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+<main class="center-main fitter">
+	<div class="spacer"></div>
+	<div class="login">
+		<h1 class="title-larger">Sign up</h1>
+
+		<form action="/new_user/" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+</main>
+{% endblock %}
